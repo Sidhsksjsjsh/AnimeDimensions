@@ -1652,7 +1652,7 @@ C:AddToggle(
 )
 E:AddLabel("Punch Setting")
 E:AddSlider(
-    {Name = "Punch Delay", Default = _G.Settings.punchdelay, Min = 1, Max = 5, Color = Color3.fromRGB(255,215,0), Callback = function(H)
+    {Name = "Punch Delay", Default = 0, Min = 1, Max = 5, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.punchdelay = H
             saveSettings()
         end}
