@@ -1906,7 +1906,7 @@ D:AddSlider(
         end}
 )
 D:AddSlider(
-    {Name = "Behind Distance", Default = _G.Settings.distance, Min = 0, Max = 20, Color = Color3.fromRGB(255,215,0), Callback = function(H)
+    {Name = "Behind Distance", Default = 0.5, Min = 0, Max = 20, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.distance = H
             saveSettings()
         end}
