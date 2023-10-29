@@ -1,4 +1,4 @@
-
+-- unknown update
 _G.Settings = {
     farmraidtoken = false,
     skilldelay = 1,
@@ -63,7 +63,7 @@ _G.Settings = {
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-local a = "Sun Hub"
+local a = "Turtle Hub"
 local b = "AnimeDimension.lua"
 function saveSettings()
     local c = game:GetService("HttpService")
@@ -1667,7 +1667,7 @@ E:AddToggle(
             saveSettings()
             task.spawn(
                 function()
-                    while task.wait(_G.Settings.punchdelay) do
+                    while wait() do
                         if not _G.Settings.AutoPunch then
                             break
                         end
@@ -1941,7 +1941,7 @@ w:AddLabel("‼️ Auto Lvl + Raid + Boss Rush ")
 w:AddLabel("‼️ Specific + Raid + Boss Rush ")
 w:AddLabel("‼️ Trial + Raid + Boss Rush ")
 G:AddButton(
-    {Name = "Script by Sun Hub", Callback = function()
+    {Name = "Script by Turtle Hub", Callback = function()
             setclipboard("Turtle Hub")
         end}
 )
