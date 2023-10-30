@@ -30,14 +30,14 @@ _G.Settings = {
     Height1 = -20,
     otherds = "@here",
     dsuser = "Not Set",
-    AutoPunch = false,
+    AutoPunch = true,
     punchdelay = "0",
     custommapselect = "None",
     webhookspeed = "10",
     AutoFarm = false,
     AutoTP = false,
     AutoTP1 = false,
-    AutoTP2 = true,
+    AutoTP2 = true, -- ?
     CustomDifficulty = "None",
     Autocustom = false,
     AutoRetry = false,
@@ -63,7 +63,7 @@ _G.Settings = {
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-local a = "Turtle Hub"
+--[[local a = "Turtle Hub"
 local b = "AnimeDimension.lua"
 function saveSettings()
     local c = game:GetService("HttpService")
@@ -83,7 +83,12 @@ function loadSettings()
         _G.Settings = c:JSONDecode(readfile(a .. "\\" .. b))
     end
 end
-loadSettings()
+loadSettings()]]
+
+function saveSettings()
+    print("fuck")
+end
+
 local e = game:GetService("ReplicatedStorage")
 local f = game:GetService("VirtualInputManager")
 local g = game:GetService("Players")
@@ -194,9 +199,9 @@ local q = {
     "Fate Dimension",
     "Slime Dimension"
 }
-local r = {"Easy", "Hard", "Nightmare", "Infinite"}
-local s = {"Capsule Series 1", "Raid Capsule", "Gear 5 Fluffy Capsule", "Esper Capsule"}
-local t = { "Tengoku Raid", "Hirito Raid", "Titan Raid", "Esper Raid" ,"Demon Lord Raid","Yomiichi Raid", "Christmas Raid","Combat Titan Raid", "Infinity Nojo Raid", "Gear 5 Fluffy Raid"}
+local r = {"Easy","Hard","Nightmare","Infinite"}
+local s = {"Capsule Series 1","Raid Capsule","Gear 5 Fluffy Capsule","Esper Capsule"}
+local t = {"Tengoku Raid","Hirito Raid","Titan Raid","Esper Raid","Demon Lord Raid","Yomiichi Raid","Christmas Raid","Combat Titan Raid","Infinity Nojo Raid","Gear 5 Fluffy Raid"}
 local u = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 local v = u:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = true})
 local w = v:MakeTab({Name = "Main", PremiumOnly = false})
@@ -209,7 +214,7 @@ local z = v:MakeTab({Name = "Notifier", PremiumOnly = false})
 local A = v:MakeTab({Name = "Auto Sell", PremiumOnly = false})
 local B = v:MakeTab({Name = "Auto Spin", PremiumOnly = false})
 local C = v:MakeTab({Name = "Auto Claim", PremiumOnly = false})
-local G = v:MakeTab({Name = "Credits", PremiumOnly = false})
+local G = v:MakeTab({Name = "Misc", PremiumOnly = false})
 
 --[[
 Name = <string> - The name of the colorpicker.
@@ -1876,52 +1881,44 @@ E:AddToggle(
 E:AddSlider(
     {Name = "Skill Delay", Default = _G.Settings.skilldelay, Min = 1, Max = 5, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.skilldelay = H
-            saveSettings()
-        end}
+            end}
 )
 E:AddLabel("Get exploit detected put more delay")
 E:AddLabel("Reccomend 1 delay no detected")
 B:AddSlider(
     {Name = "Spin Delay", Default = _G.Settings.eggspintime, Min = 0, Max = 10, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.eggspintime = H
-            saveSettings()
-        end}
+            end}
 )
 D:AddSlider(
     {Name = "Speed", Default = _G.Settings.Speed, Min = 80, Max = 100, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.Speed = H
-            saveSettings()
-        end}
+            end}
 )
 D:AddSlider(
     {Name = "Over Height", Default = _G.Settings.Height, Min = 5, Max = 10, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.Height = H
-            saveSettings()
-        end}
+            end}
 )
 D:AddSlider(
     {Name = "Under Height", Default = _G.Settings.Height1, Min = -15, Max = -10, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.Height1 = H
-            saveSettings()
-        end}
+            end}
 )
 D:AddSlider(
     {Name = "Behind Distance", Default = 0.5, Min = 0, Max = 20, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.distance = H
-            saveSettings()
-        end}
+            end}
 )
 z:AddSlider(
     {Name = "Send Delay", Default = _G.Settings.webhookspeed, Min = 10, Max = 10, Color = Color3.fromRGB(255,215,0), Callback = function(H)
             _G.Settings.webhookspeed = H
-            saveSettings()
         end}
 )
 
 z:AddTextbox(
     {Name = "Put Your ID", Default = _G.Settings.dsuser, TextDisappear = false, Callback = function(H)
             _G.Settings.dsuser = H
-            saveSettings()
         end}
 )
 D:AddLabel("select behind recommend")
@@ -1932,30 +1929,26 @@ z:AddTextbox(
         TextDisappear = false,
         Callback = function(H)
             _G.Settings.otherds = H
-            saveSettings()
-        end
+            end
     }
 )
 w:AddLabel("🔅 Example 🔅 ")
 w:AddLabel("‼️ Auto Lvl + Raid + Boss Rush ")
 w:AddLabel("‼️ Specific + Raid + Boss Rush ")
 w:AddLabel("‼️ Trial + Raid + Boss Rush ")
-G:AddButton(
-    {Name = "Script by Turtle Hub", Callback = function()
-            setclipboard("Turtle Hub")
-        end}
-)
-G:AddButton(
-    {Name = "Discord", Callback = function()
-            setclipboard("https://discord.gg/yF4hc2pm")
-        end}
-)
-G:AddTextbox(
-    {Name = "Toggle Gui Key", Default = _G.Settings.toggleguikey, TextDisappear = false, Callback = function(H)
-            _G.Settings.toggleguikey = H
-            saveSettings()
-        end}
-)
+
+G:AddToggle({
+Name = "Immortal?",
+Default = false,
+Callback = function(Value)
+_G._Immortal_Script = value
+        while wait() do
+            if _G._Immortal_Script == false then break end
+               if workspace.Folders:FindFirstChild("Debris") then
+                    Workspace.Folders:FindFirstChild("Debris")
+                end
+            end
+end})
 
 
 u:MakeNotification({Name = "VIP Turtle Hub V3", Content = "Game: Anime Dimension", Time = 15})
